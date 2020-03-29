@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Student;  //Eloquent
 class MahasiswaController extends Controller
 {
     /**
@@ -14,10 +14,13 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
-        $mahasiswa = DB::table('mahasiswa')->get();
-        dump($mahasiswa);
-        return view('mahasiswa.index');
+        //query builder
+        // $mahasiswa = DB::table('mahasiswa')->get();
+        // dump($mahasiswa);
+
+        // Eloquent
+        $mahasiswa = Student::all();
+        return view('mahasiswa.index', ['mahasiswa' => $mahasiswa ]);
     }
 
     /**
